@@ -1,11 +1,8 @@
 <template>
   <div>
-    <el-button type="primary" icon="el-icon-plus" @click="showAdd"
-      >添加</el-button
-    >
+    <el-button type="primary" icon="el-icon-plus" @click="showAdd">添加</el-button>
     <el-table style="margin:20px 0" :data="trademarks" border>
-      <el-table-column label="序号" type="index" width="80" align="center">
-      </el-table-column>
+      <el-table-column label="序号" type="index" width="80" align="center"></el-table-column>
 
       <el-table-column prop="tmName" label="品牌名称" />
       <el-table-column label="品牌LOGO">
@@ -16,20 +13,8 @@
 
       <el-table-column label="操作">
         <template slot-scope="{ row, $index }">
-          <el-button
-            type="warning"
-            size="mini"
-            icon="el-icon-edit"
-            @click="showUpdate(row)"
-            >修改</el-button
-          >
-          <el-button
-            type="danger"
-            size="mini"
-            icon="el-icon-delete"
-            @click="remove(row)"
-            >删除</el-button
-          >
+          <el-button type="warning" size="mini" icon="el-icon-edit" @click="showUpdate(row)">修改</el-button>
+          <el-button type="danger" size="mini" icon="el-icon-delete" @click="remove(row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -45,10 +30,7 @@
       @size-change="handleSizeChange"
     />
 
-    <el-dialog
-      :title="form.id ? '修改品牌' : '添加品牌'"
-      :visible.sync="isShowDialog"
-    >
+    <el-dialog :title="form.id ? '修改品牌' : '添加品牌'" :visible.sync="isShowDialog">
       <el-form :model="form" :rules="rules" ref="ruleForm" style="width:80%">
         <el-form-item label="品牌名称" label-width="100px" prop="tmName">
           <el-input v-model="form.tmName" autocomplete="off"></el-input>
@@ -66,9 +48,7 @@
           >
             <img v-if="form.logoUrl" :src="form.logoUrl" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            <div slot="tip" class="el-upload__tip">
-              只能上传jpg/png文件，且不超过50k
-            </div>
+            <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过50k</div>
           </el-upload>
         </el-form-item>
       </el-form>
@@ -221,6 +201,10 @@ export default {
         logoUrl: ""
       };
       this.isShowDialog = true;
+      //延迟到界面开发后才执行
+      this.$nextTick(() => {
+        this.$refs.ruleForm.clearValidate();
+      });
     },
     showUpdate(trademark) {
       // this.form = trademark;

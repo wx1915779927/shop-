@@ -10,6 +10,7 @@ export default {
       url: '/admin/product/getCategory1',
       method: 'get'
     })
+
   },
 
   /* 
@@ -20,6 +21,7 @@ export default {
       url: '/admin/product/getCategory2/' + category1Id,
       method: 'get'
     })
+
   },
 
   /* 
@@ -30,5 +32,6 @@ export default {
       url: '/admin/product/getCategory3/' + category2Id,
       method: 'get'
     })
+
   }
 }
