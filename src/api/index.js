@@ -35,6 +35,15 @@ export {
 }
 from './product/attr'
 
+export {
+  default as spu
+}
+from './product/spu'
+
+export {
+  default as sku
+}
+from './product/sku'
 
 /* {
   login: {},
